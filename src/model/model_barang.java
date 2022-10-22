@@ -106,7 +106,7 @@ public class model_barang implements controller.c_barang{
             Statement stt = con.createStatement();
             // Query menampilkan semua data pada tabel siswa
             // dengan urutan NIS dari kecil ke besar
-            String sql = "SELECT * FROM penjualan ORDER BY ID ASC";
+            String sql = "SELECT * FROM barang ORDER BY ID ASC";
             ResultSet res = stt.executeQuery(sql);
             while (res.next()) {
                 Object[] ob = new Object[8];
@@ -128,6 +128,23 @@ public class model_barang implements controller.c_barang{
         vb.cmbwarna.setSelectedIndex(0);
         vb.cmbspek.setSelectedIndex(0);
         vb.txtharga.setText("");
+    }
+
+    @Override
+    public void Kliktable(v_barang vb) throws SQLException {
+        try {
+            int pilih = vb.tblbarang.getSelectedRow();
+            if (pilih == -1) {
+               return;
+            }
+            vb.txtid.setText(vb.tblmodel.getValueAt(pilih, 0).toString());
+            vb.txtjenis.setText(vb.tblmodel.getValueAt(pilih, 1).toString());
+            vb.cmbwarna.setSelectedItem(vb.tblmodel.getValueAt(pilih, 2).toString());
+            vb.cmbspek.setSelectedItem(vb.tblmodel.getValueAt(pilih, 3).toString());
+            vb.txtharga.setText(vb.tblmodel.getValueAt(pilih, 4).toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }

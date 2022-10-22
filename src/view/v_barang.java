@@ -7,6 +7,8 @@ package view;
 
 import java.awt.Component;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -143,6 +145,11 @@ public class v_barang extends javax.swing.JFrame {
                 "id", "nama hp", "harga hp"
             }
         ));
+        tblbarang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblbarangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblbarang);
 
         jLabel3.setText("Harga");
@@ -269,16 +276,32 @@ public class v_barang extends javax.swing.JFrame {
     }//GEN-LAST:event_txtidActionPerformed
 
     private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
-        // TODO add your handling code here:
+        try {
+            model.Tambah(this);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btntambahActionPerformed
 
     private void btnubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnubahActionPerformed
-        // TODO add your handling code here:
+        try {
+            model.Ubah(this);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnubahActionPerformed
 
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
-        // TODO add your handling code here:
+        try {
+            model.Hapus(this);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void tblbarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblbarangMouseClicked
+        try {
+            model.Kliktable(this);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tblbarangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -310,7 +333,11 @@ public class v_barang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new v_barang().setVisible(true);
+                try {
+                    new v_barang().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(v_barang.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

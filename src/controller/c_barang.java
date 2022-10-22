@@ -20,4 +20,6 @@ public interface c_barang {
     public void Keluar(v_barang vb) throws SQLException;
     public void Tampil(v_barang vb) throws SQLException;
     public void Reset(v_barang vb)throws SQLException;
+    public void Kliktable(v_barang vb)throws SQLException;
+    
 }
