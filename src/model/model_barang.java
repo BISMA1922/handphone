@@ -124,7 +124,10 @@ public class model_barang implements controller.c_barang{
 
     @Override
     public void Reset(v_barang vb) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        vb.txtjenis.setText("");
+        vb.cmbwarna.setSelectedIndex(0);
+        vb.cmbspek.setSelectedIndex(0);
+        vb.txtharga.setText("");
     }
 
 }
